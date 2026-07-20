@@ -1,0 +1,6 @@
+{
+  "name": "Predictive Task Scheduling",
+  "description": "A smart, responsive task scheduling application that predicts and assigns tasks using rule-based analysis of historical performance, workloads, and task-type durations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

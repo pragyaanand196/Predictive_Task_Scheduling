@@ -1,0 +1,189 @@
+[
+  {
+    "id": "task-1",
+    "name": "Implement OAuth Authentication",
+    "type": "Development",
+    "employee": "Alice Vance",
+    "priority": "High",
+    "estimatedDuration": 8,
+    "actualDuration": 7,
+    "status": "Completed",
+    "completionDate": "2026-07-10"
+  },
+  {
+    "id": "task-2",
+    "name": "Write Unit Tests for Auth Service",
+    "type": "Testing",
+    "employee": "Alice Vance",
+    "priority": "Medium",
+    "estimatedDuration": 4,
+    "actualDuration": 3.5,
+    "status": "Completed",
+    "completionDate": "2026-07-11"
+  },
+  {
+    "id": "task-3",
+    "name": "Build Landing Page UI Mockup",
+    "type": "Design",
+    "employee": "Bob Miller",
+    "priority": "Low",
+    "estimatedDuration": 6,
+    "actualDuration": 8,
+    "status": "Completed",
+    "completionDate": "2026-07-12"
+  },
+  {
+    "id": "task-4",
+    "name": "Optimize Core SQL Queries",
+    "type": "Development",
+    "employee": "Alice Vance",
+    "priority": "High",
+    "estimatedDuration": 12,
+    "actualDuration": 10,
+    "status": "Completed",
+    "completionDate": "2026-07-13"
+  },
+  {
+    "id": "task-5",
+    "name": "Create Brand Color Guidelines",
+    "type": "Design",
+    "employee": "Bob Miller",
+    "priority": "Medium",
+    "estimatedDuration": 8,
+    "actualDuration": 10,
+    "status": "Completed",
+    "completionDate": "2026-07-14"
+  },
+  {
+    "id": "task-6",
+    "name": "Competitor SEO Research",
+    "type": "Research",
+    "employee": "Bob Miller",
+    "priority": "Medium",
+    "estimatedDuration": 4,
+    "actualDuration": 5,
+    "status": "Completed",
+    "completionDate": "2026-07-14"
+  },
+  {
+    "id": "task-7",
+    "name": "User Acceptance Testing Phase 1",
+    "type": "Testing",
+    "employee": "Charlie Smith",
+    "priority": "High",
+    "estimatedDuration": 5,
+    "actualDuration": 4,
+    "status": "Completed",
+    "completionDate": "2026-07-15"
+  },
+  {
+    "id": "task-8",
+    "name": "API Route Testing with Postman",
+    "type": "Testing",
+    "employee": "Charlie Smith",
+    "priority": "Low",
+    "estimatedDuration": 3,
+    "actualDuration": 3,
+    "status": "Completed",
+    "completionDate": "2026-07-16"
+  },
+  {
+    "id": "task-9",
+    "name": "Create Promotional Banner Ads",
+    "type": "Marketing",
+    "employee": "Diana Prince",
+    "priority": "Medium",
+    "estimatedDuration": 10,
+    "actualDuration": 8,
+    "status": "Completed",
+    "completionDate": "2026-07-16"
+  },
+  {
+    "id": "task-10",
+    "name": "Set up Email Campaign Funnel",
+    "type": "Marketing",
+    "employee": "Diana Prince",
+    "priority": "High",
+    "estimatedDuration": 6,
+    "actualDuration": 5,
+    "status": "Completed",
+    "completionDate": "2026-07-17"
+  },
+  {
+    "id": "task-11",
+    "name": "Desktop Application Design Revamp",
+    "type": "Design",
+    "employee": "Diana Prince",
+    "priority": "Medium",
+    "estimatedDuration": 5,
+    "actualDuration": 4.5,
+    "status": "Completed",
+    "completionDate": "2026-07-18"
+  },
+  {
+    "id": "task-12",
+    "name": "Market Demand Analysis",
+    "type": "Research",
+    "employee": "Evan Wright",
+    "priority": "High",
+    "estimatedDuration": 6,
+    "actualDuration": 7,
+    "status": "Completed",
+    "completionDate": "2026-07-18"
+  },
+  {
+    "id": "task-13",
+    "name": "Technical Feasibility Study",
+    "type": "Research",
+    "employee": "Evan Wright",
+    "priority": "Low",
+    "estimatedDuration": 8,
+    "actualDuration": 8,
+    "status": "Completed",
+    "completionDate": "2026-07-19"
+  },
+  {
+    "id": "task-14",
+    "name": "Write Documentation for API",
+    "type": "Development",
+    "employee": "Alice Vance",
+    "priority": "Medium",
+    "estimatedDuration": 6,
+    "actualDuration": null,
+    "status": "Pending",
+    "completionDate": null
+  },
+  {
+    "id": "task-15",
+    "name": "Design Mobile App Layout",
+    "type": "Design",
+    "employee": "Bob Miller",
+    "priority": "High",
+    "estimatedDuration": 4,
+    "actualDuration": null,
+    "status": "In Progress",
+    "completionDate": null
+  },
+  {
+    "id": "task-16",
+    "name": "Analyze Performance Bottlenecks",
+    "type": "Research",
+    "employee": "Evan Wright",
+    "priority": "Medium",
+    "estimatedDuration": 6,
+    "actualDuration": null,
+    "status": "In Progress",
+    "completionDate": null
+  },
+  {
+    "id": "task-17",
+    "name": "Load Testing Core Endpoints",
+    "type": "Testing",
+    "employee": "Evan Wright",
+    "priority": "Low",
+    "estimatedDuration": 4,
+    "actualDuration": null,
+    "status": "Pending",
+    "completionDate": null
+  }
+]

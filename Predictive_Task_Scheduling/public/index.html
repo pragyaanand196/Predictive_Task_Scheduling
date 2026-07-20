@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predictive Task Scheduling</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-box">P</div>
+        <div>
+          <h1 class="header-title">Predictive Task Scheduling</h1>
+          <span class="header-badge">Vanilla JS Local Edition</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="header-tag">VS Code Sandbox</span>
+        <button id="btn-create-task-header" class="btn btn-primary flex-center gap-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          Create Task
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid Layout -->
+  <main class="app-main">
+    
+    <!-- Educational Process Section (Requirement: Explanation of scheduling process, predictive rules, etc.) -->
+    <section class="info-banner">
+      <div class="info-content">
+        <span class="info-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V12"/><path d="M12 8h.01"/><circle cx="12" cy="12" r="10"/></svg>
+          Algorithm & Process Workflow
+        </span>
+        <h2 class="info-title">Predictive Task Scheduling Mechanics</h2>
+        <p class="info-desc">
+          This system uses a rule-based multi-criteria scheduling algorithm to recommend optimal task owners based on three criteria: <strong>Active Workload</strong> (lowest current hours is preferred), <strong>Historical Completion Rates</strong> (highest success counts is preferred), and <strong>Specific Task Type Speed</strong> (relative ratio of actual hours versus estimated hours). This prevents task bottlenecking and improves completion accuracy.
+        </p>
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="step-num">1</span>
+            <h4 class="step-label">Capacity (40%)</h4>
+            <p class="step-text">Calculates total backlog workload (Pending/In-Progress) to avoid overloading employees.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">2</span>
+            <h4 class="step-label">Reliability (30%)</h4>
+            <p class="step-text">Measures the historical percentage of successfully completed tasks versus assigned tasks.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">3</span>
+            <h4 class="step-label">Efficiency (30%)</h4>
+            <p class="step-text">Tracks the employee's speed ratio (Actual/Estimated) specifically for the selected task type.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Analytics Cards (Requirement: Dashboard Cards) -->
+    <section class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="card-header-small">
+          <span class="card-metric-label">Total Task Records</span>
+          <svg class="text-blue" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17h6"/><path d="M9 12h6"/><path d="M9 7h6"/></svg>
+        </div>
+        <div>
+          <div id="stat-total-tasks" class="metric-value">0</div>
+          <div class="metric-sub">
+            <span id="stat-completed-tasks" class="text-semibold text-slate-700">0</span> completed &bull;
+            <span id="stat-pending-tasks" class="text-semibold text-slate-700">0</span> active
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header-small">
+          <span class="card-metric-label">Avg Completion Time</span>
+          <svg class="text-emerald" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div id="stat-avg-time" class="metric-value">0.0 hrs</div>
+          <div class="metric-sub">Across all completed timesheets</div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header-small">
+          <span class="card-metric-label">Top Performance Employee</span>
+          <svg class="text-indigo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div id="stat-best-employee" class="metric-value font-display text-base">Loading...</div>
+          <div class="metric-sub">Highest speed &amp; completion combo</div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-header-small">
+          <span class="card-metric-label">Team Average Rate</span>
+          <svg class="text-amber" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <div id="stat-avg-performance" class="metric-value">0%</div>
+          <div class="metric-sub">
+            Common: <span id="stat-common-type" class="text-semibold text-slate-700">None</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-Column Interactive Sections -->
+    <div class="workspace-layout">
+      
+      <!-- LEFT COLUMN: Live Recommendation Engine -->
+      <section class="predictor-section card">
+        <div class="card-header">
+          <div class="flex-center gap-1">
+            <svg class="text-blue" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+            <h3 class="card-title">Predictive Scheduling Engine</h3>
+          </div>
+          <span class="card-badge bg-blue text-white uppercase-tag">Live Engine</span>
+        </div>
+
+        <div class="form-row-grid">
+          <div class="form-group">
+            <label class="form-label-small">Task Type</label>
+            <select id="pred-type" class="form-select select-bg">
+              <option value="Development">Development</option>
+              <option value="Design">Design</option>
+              <option value="Testing">Testing</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Research">Research</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label-small">Est. Duration (hrs)</label>
+            <input type="number" id="pred-duration" class="form-input" value="8" min="1">
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="pred-result-container" class="predictor-card bg-slate">
+          <!-- Dynamically loaded -->
+          <div class="flex-center h-100 flex-column text-center text-slate">
+            <div class="loader"></div>
+            <p class="font-mono text-xs mt-1">Analyzing database trends...</p>
+          </div>
+        </div>
+
+        <!-- Candidate Scorecard Breakdown -->
+        <div class="scorecard-container">
+          <h4 class="scorecard-title">Candidate Suitability Scorecard</h4>
+          <div id="pred-candidates-list" class="candidates-stack">
+            <!-- Dynamically loaded -->
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Task List and Controls -->
+      <section class="task-manager-section">
+        
+        <!-- Controls, Filters, Search -->
+        <div class="controls-panel card">
+          <div class="search-row">
+            <div class="search-input-wrapper">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="search-input" class="form-input search-field" placeholder="Search by task name or assigned employee...">
+            </div>
+            <button id="btn-create-task-body" class="btn btn-primary flex-center gap-1 shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              New Task
+            </button>
+          </div>
+
+          <div class="filters-row border-top">
+            <div class="filters-group">
+              <select id="filter-type" class="form-select filter-select">
+                <option value="">All Task Types</option>
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Testing">Testing</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Research">Research</option>
+              </select>
+
+              <select id="filter-status" class="form-select filter-select">
+                <option value="">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+
+              <select id="filter-priority" class="form-select filter-select">
+                <option value="">All Priorities</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+            <button id="btn-clear-filters" class="btn-text text-blue text-semibold text-xs hidden">Clear Filters</button>
+          </div>
+        </div>
+
+        <!-- Task Table Card -->
+        <div class="table-card card">
+          <div class="responsive-table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="sortable" data-sort="name">
+                    Task Details <span class="sort-icon">&#11097;</span>
+                  </th>
+                  <th class="sortable" data-sort="type">
+                    Type <span class="sort-icon">&#11097;</span>
+                  </th>
+                  <th class="sortable" data-sort="employee">
+                    Assignee <span class="sort-icon">&#11097;</span>
+                  </th>
+                  <th class="sortable" data-sort="priority">
+                    Priority <span class="sort-icon">&#11097;</span>
+                  </th>
+                  <th class="sortable" data-sort="estimatedDuration">
+                    Duration <span class="sort-icon">&#11097;</span>
+                  </th>
+                  <th class="sortable" data-sort="status">
+                    Status <span class="sort-icon">&#11097;</span>
+                  </th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tasks-table-body">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span id="footer-count">Showing 0 of 0 tasks</span>
+            <span id="footer-filters" class="text-slate font-mono">Filters active: 0</span>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive Task Form Modal -->
+  <div id="task-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-header-title">Schedule New Task</h3>
+        <button id="btn-close-modal" class="modal-close-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <form id="task-form" class="modal-form">
+        <div id="modal-error-alert" class="alert alert-danger hidden">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span id="modal-error-text">Form error text goes here</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Task Title</label>
+          <input type="text" id="form-task-name" class="form-input font-medium" placeholder="e.g. Design Dashboard Prototypes" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Task Type</label>
+            <select id="form-task-type" class="form-select select-bg">
+              <option value="Development">Development</option>
+              <option value="Design">Design</option>
+              <option value="Testing">Testing</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Research">Research</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Task Priority</label>
+            <select id="form-task-priority" class="form-select select-bg">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Est. Duration (hrs)</label>
+            <input type="number" id="form-task-est" class="form-input" value="8" min="1" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Workflow Status</label>
+            <select id="form-task-status" class="form-select select-bg">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Assigned Employee selection with AUTO PREDICT helper trigger -->
+        <div class="form-group border-top border-bottom py-3">
+          <div class="form-label-header">
+            <label class="form-label mb-0">Assigned Employee</label>
+            <button type="button" id="btn-form-auto-assign" class="btn-helper">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Auto-Predict Best Match
+            </button>
+          </div>
+          <select id="form-task-employee" class="form-select select-bg">
+            <option value="Alice Vance">Alice Vance</option>
+            <option value="Bob Miller">Bob Miller</option>
+            <option value="Charlie Smith">Charlie Smith</option>
+            <option value="Diana Prince">Diana Prince</option>
+            <option value="Evan Wright">Evan Wright</option>
+          </select>
+        </div>
+
+        <!-- Conditionally visible section when status is Completed -->
+        <div id="form-completed-fields" class="form-grid-2 hidden">
+          <div class="form-group">
+            <label class="form-label">Actual Duration (hrs)</label>
+            <input type="number" id="form-task-act" class="form-input" placeholder="e.g. 7" min="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Completion Date</label>
+            <input type="date" id="form-task-date" class="form-input">
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions-row">
+          <button type="button" id="btn-cancel-modal" class="btn btn-secondary">Cancel</button>
+          <button type="submit" id="btn-submit-form" class="btn btn-primary">Schedule Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Custom notification popup toast -->
+  <div id="toast-notification" class="toast hidden">
+    <div class="toast-indicator">&#10004;</div>
+    <span id="toast-message">Task updated successfully!</span>
+  </div>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 Predictive Task Scheduling Simulator. Vanilla Internship Edition.</p>
+    <p class="footer-sub">Uses Express.js endpoints for file-based JSON logging in data/tasks.json.</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

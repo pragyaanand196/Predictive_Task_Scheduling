@@ -1,0 +1,13 @@
+{
+  "name": "predictive-task-scheduling",
+  "version": "1.0.0",
+  "description": "Predictive scheduling algorithm that assigns tasks based on historical execution durations and performance trends.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
